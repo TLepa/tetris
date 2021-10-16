@@ -1,27 +1,49 @@
 #include "printwall.h"
 
-Printwall::Printwall()
+PrintWall::PrintWall()
 {
-     mPlayFieldX=16;
-     mPlayFieldY=20;
+    mPlayFieldX = 16;
+    mPlayFiledY = 20;
 }
 
-int Printwall::getPlayFieldX() const
+int PrintWall::getPlayFieldX() const
 {
     return mPlayFieldX;
 }
 
-int Printwall::getPlayFieldY() const
+int PrintWall::getPlayFieldY() const
 {
-    return mPlayFieldY;
+    return mPlayFiledY;
 }
 
-void Printwall::setPlayFieldX(int newPlayFieldX)
+void PrintWall::setPlayFieldX(int newPlayFieldX)
 {
     mPlayFieldX = newPlayFieldX;
 }
 
-void Printwall::setPlayFieldY(int newPlayFieldY)
+void PrintWall::setWalls()
 {
-    mPlayFieldY = newPlayFieldY;
+    for (int x = 0; x <= X_SIZE; x++)
+        setChar(x, 0, CHAR_SIDE);
+
+    for (int x = 0; x <= X_SIZE; x++)
+        setChar(x, mPlayFieldX, CHAR_SIDE);
+
+    for (int x = 0; x <= X_SIZE; x++)
+        setChar(x, Y_SIZE, CHAR_SIDE);
+
+    for (int y = 0; y <= Y_SIZE; y++)
+        setChar(0, y, CHAR_SIDE);
+
+    for (int y = 0; y <= mPlayFiledY; y++)
+        setChar(mPlayFieldX, y, CHAR_SIDE);
+
+    for (int y = 0; y <= Y_SIZE; y++)
+        setChar(X_SIZE, y, CHAR_SIDE);
 }
+
+void PrintWall::setPlayFiledY(int newPlayFiledY)
+{
+    mPlayFiledY = newPlayFiledY;
+}
+
